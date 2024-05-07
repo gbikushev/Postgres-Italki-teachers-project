@@ -32,6 +32,7 @@ so each teacher can teach one or multiple languages from Supported languages.
  - teacher_id: FOREIGN key from table "teachers"
  - language_id FOREIGN key from table "languages"
 
+These tables collectively provide comprehensive info about the teacher and languages he/she teach from Supported languages.
 
 **Analyses:**
 * query1:
@@ -56,7 +57,9 @@ Example of usage:
 output all teachers that can teach all languages that are in specified list ordered by price.
 Example of usage:
 1) python data_analysis.py --query=2 --languages=english,russian
+(output teachers who teach english and russian at the same time)
 2) python data_analysis.py --query=2 --languages=english,russian,spanish
+(output teachers who teach english, russian and spanish at the same time)
 
 * query3:
 output top {limit} most paid {language} teachers.

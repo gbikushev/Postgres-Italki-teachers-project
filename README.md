@@ -1,6 +1,6 @@
 # Gleb Bikushev CA_2 (Data Architecture)
 
-## How to run the project
+## How to set up and load the dataset
 1) Run database_setup.sql
 ```bash
 psql -U username -d database_name -f database_setup.sql

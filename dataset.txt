@@ -1,0 +1,75 @@
+
+All teachers personal links who teach any language from list [English, Spanish, Russian, Japanese, Italian] were extracted 
+from https://www.italki.com/en/teachers/
+
+Supported languages: English, Spanish, Russian, Japanese, Italian
+
+**Database description:**
+Datasets (tables) included in this project:
+1) "teachers": each row represents a unique teacher with all nessesary info about a teacher 
+Columns are:
+ - teacher_id: unique teacher id on the website www.italki.com that is extracted from teachers link to their personal card (type: bigint) (PRIMARY key).
+ - name: The name of the teacher's card on the website (type: text).
+ - rating: The rating of the teacher in the range from 0 to 5 (type: numeric(2,1)).
+ - students: The number of students the teacher had (type: integer).
+ - lessons: The number of lessons that the teacher has conducted (type: integer).
+ - attendance: The percentage of classes the teacher has successfully attended without cancellations or no-shows 
+ in the range from 0 to 100 (type: smallint).
+ - response: The percentage of times the teacher replies to messages or lesson requests in the range from 0 to 100 (type: smallint).
+ - reviews: The number of reviews the teacher has (type: integer).
+ - price: The price for one Trial lesson in USD (type: numeric(5,2)).
+ - link: The unique link on the teacher's personal card (type: text). 
+
+2) "languages": represents all languages that used for parsing teachers. So, these are the languages that extracted teachers teach.
+Columns are:
+ - language_id: unique id of language (type: VARCHAR(10)) (PRIMARY key)
+ - language: unique language (type: language_type) 
+ (language_type is custom categorical type, that can accept only Supported languages: 'English', 'Spanish', 'Russian', 'Japanese', 'Italian')
+
+3) "teachers_languages": connection table between "teachers" and "languages" to provide 3NF of database,
+so each teacher can teach one or multiple languages from Supported languages.
+ - teachers_languages_id: unique id of each row (PRIMARY key)
+ - teacher_id: FOREIGN key from table "teachers"
+ - language_id FOREIGN key from table "languages"
+
+
+**Analyses:**
+* query1:
+output all teachers that teach {language} language with the ability to specify:
+ - rating [>,<,=,>=,<=] {rating}
+ - students [>,<,=,>=,<=] {students}
+ - lessons [>,<,=,>=,<=] {lessons}
+ - attendance [>,<,=,>=,<=] {attendance}
+ - response [>,<,=,>=,<=] {response}
+ - reviews [>,<,=,>=,<=] {reviews}
+ - price [>,<,=,>=,<=] {price}
+ The operators [>,<,=,>=,<=] are applied to these values with special way (you have to specify sign and value
+ in the quotation marks) 
+ (check example of usage)
+Example of usage:
+1) python data_analysis.py --query=1 --language=english --rating=">=4.9" --lessons="<100" --price="<10.00" --price=">8.00"
+(selecting english language teachers with rating equals or more than 4.9, number of lessons taken less than 100 and price between 8 and 10 usd)
+2) python data_analysis.py --query=1 --language=russian --rating="=5.0" --price="<=15" --reviews=">600"
+(selecting russian language teachers with rating equals 5.0, price equals or less than 15 and number of reviews more than 600)
+
+* query2:
+output all teachers that can teach all languages that are in specified list ordered by price.
+Example of usage:
+1) python data_analysis.py --query=2 --languages=english,russian
+2) python data_analysis.py --query=2 --languages=english,russian,spanish
+
+* query3:
+output top {limit} most paid {language} teachers.
+Example of usage:
+1) python data_analysis.py --query=3 --language=english --limit=10
+(output top 10 most paid english language teachers)
+2) python data_analysis.py --query=3 --language=russian --limit=15
+(output top 15 most paid russian language teachers)
+
+* query4:
+output top {limit} {language} teachers with the most number of students they had.
+Example of usage:
+1) python data_analysis.py --query=4 --language=english --limit=10
+(output top 10 english language teachers with the greatest number of students they had)
+2) python data_analysis.py --query=4 --language=russian --limit=5
+(output top 5 russian language teachers with the greatest number of students they had)

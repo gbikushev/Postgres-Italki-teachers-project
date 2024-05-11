@@ -1,4 +1,4 @@
-# Gleb Bikushev CA_2 (Data Architecture)
+# Postgres Data Architecture project with data collection using web scraping techniques (Beautiful Soup, requests)
 
 ## How to set up and load the dataset
 1) Run database_setup.sql

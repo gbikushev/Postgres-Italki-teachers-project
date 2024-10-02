@@ -24,6 +24,9 @@ Output should be like this:
 The database is used to store data about teachers from website https://www.italki.com/en/teachers/ that teach following languages:
 English, Spanish, Russian, Japanese, Italian
 
+Here is the **interface** of Italki website:
+![Example Image](images/italki.png)
+
 So, Supported languages: 'English', 'Spanish', 'Russian', 'Japanese', 'Italian'
 
 The tables collectively provide comprehensive info about the teacher and languages he/she teach from Supported languages.

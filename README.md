@@ -1,6 +1,75 @@
-# Postgres Data Architecture project with data collection using web scraping techniques (Beautiful Soup, requests)
+# Italki Teachers Overview
 
-## How to set up and load the dataset
+## Table of Contents
+- [Objective](#objective)
+- [Tools](#tools)
+- [Key Insights](#key-insights)
+- [Set Up Instructions](#set-up-instructions)
+- [Database](#database)
+- [Functionality](#functionality)
+- [Dashboard](#dashboard)
+- [Links](#links)
+
+
+## Objective
+
+**Objective: provide a comprehensive analysis of Italki teachers performance, students engagement, and pricing across different languages and regions.**
+
+## Tools
+
+- Tableau
+- SQL
+- Python (Beautiful Soup, Requests, psycopg2)
+
+## Key Insights
+
+### **1. Lesson Price**
+- **Insight**: The average lesson price across all languages is **$9.00**. 
+- Teachers offering lessons in English and Spanish seem to dominate in number, but lesson prices vary significantly by language. 
+
+---
+
+### **2. Teacher Rating**
+- **Insight**: The average teacher rating is **4.8**. Most teachers are highly rated, with a significant cluster around the maximum rating of 5.0.
+- **Language Insight**: Teachers offering lessons in Russian and Spanish languages tend to have higher average ratings compared to others.
+
+---
+
+### **3. Students Number**
+- **Insight**: The average number of students per teacher is **201.5**. Teachers for English and Spanish languages attract the highest number of students.
+
+---
+
+### **4. Reviews Number**
+- **Insight**: The average number of reviews per teacher is **142.3**. Teachers with a high number of reviews are likely to be more popular and experienced.
+- **Language Insight**: Teachers offering lessons in Japanese and Spanish tend to have more reviews, indicating higher student engagement.
+
+---
+
+### **5. Lessons Number**
+- **Insight**: The average number of lessons conducted is **1711.7**. This metric highlights teacher activity, with English and Spanish teachers leading in the number of lessons conducted.
+- **Language Insight**: Teachers offering lessons in English are significantly more active, suggesting a higher global demand for English lessons.
+
+---
+
+### **6. Attendance Rate**
+- **Insight**: The attendance rate across all teachers is **96%**, showcasing a high commitment to scheduled lessons across all languages and countries.
+
+---
+
+### **7. Response Rate**
+- **Insight**: The response rate is **95.8%**, indicating that teachers are highly responsive to student inquiries or booking requests.
+
+---
+
+### **General Insights**
+- Teachers offering lessons in **English** and **Spanish** dominate in terms of numbers, students, and lessons conducted.
+- Countries with higher average lesson prices might correspond to regions with higher purchasing power or specialized language skills in demand.
+
+This dashboard effectively highlights the diversity in teacher performance and demand across languages and regions.
+
+## Set Up Instructions
+
 1) Run database_setup.sql
 ```bash
 psql -U username -d database_name -f database_setup.sql
@@ -19,10 +88,11 @@ Output should be like this:
 ![Example Image](images/9.png)
 
 
-## Description
+## Database
 
 The database is used to store data about teachers from website https://www.italki.com/en/teachers/ that teach following languages:
-English, Spanish, Russian, Japanese, Italian
+
+**English, Spanish, Russian, Japanese, Italian**
 
 Here is the **interface** of Italki website:
 ![Example Image](images/italki.png)
@@ -65,7 +135,7 @@ Columns are:
  - language_id FOREIGN key from table "languages"
 
 
-## Links to data source
+### Links to data source
 
 1) https://www.italki.com/en/teachers/english
 2) https://www.italki.com/en/teachers/spanish
@@ -74,7 +144,7 @@ Columns are:
 5) https://www.italki.com/en/teachers/italian
 
 
-## Specific outputs / Functionality
+## Functionality
 
 ### 1) Output all teachers that teach {language} language with the ability to specify filter for teacher's rating,students,lessons,attendance,response,reviews,price.
 
@@ -171,3 +241,16 @@ python data_analysis.py --query=4 --language=russian --limit=5
 (Output top 5 russian language teachers with the greatest number of students they had)
 
 ![Example Image](images/8.png)
+
+
+## Dashboard
+![Example Image](images/dashboard.png)
+
+**The slicers are:**
+ - Metric
+ - Language
+
+ ## Links
+
+- **Live Dashboard:** [Dashboard](https://public.tableau.com/shared/D85MTTDXF?:display_count=n&:origin=viz_share_link)
+- **LinkedIn:** [LinkedIn](linkedin.com/in/gleb-bikushev-ba4b10293) 

@@ -108,6 +108,7 @@ Columns are:
 
  - teacher_id: unique teacher id on the website www.italki.com that is extracted from teachers link to their personal card (type: bigint) (PRIMARY key).
  - name: The name of the teacher's card on the website (type: text).
+ - country: The country the teacher from (type: text).
  - rating: The rating of the teacher in the range from 0 to 5 (type: numeric(2,1)).
  - students: The number of students the teacher had (type: integer).
  - lessons: The number of lessons that the teacher has conducted (type: integer).
